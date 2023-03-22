@@ -6,10 +6,12 @@ import { InputRadio } from "./components/InputRadio";
 import { Select } from "./components/Select";
 import { Male } from "./components/Male";
 import { Female } from "./components/Female";
+import { CheckCircle, XCircle } from "phosphor-react";
+import { Button } from "./components/Button";
 
 export const App = () => {
-  const [combinationStatus, setCombinationStatus] = useState("DEFAULT"); // DEFAULT - MATCH - NOT_MATCH
-
+  const [isLoading, setIsLoading] = useState(false);
+  const [combinationStatus, setCombinationStatus] = useState("NOT_MATCH"); // DEFAULT - MATCH - NOT_MATCH
   const [fields, setFields] = useState({
     gender: "male",
     ocasion: "",
@@ -21,8 +23,10 @@ export const App = () => {
   const handleCombination = async () => {
     try {
       const response = await fetch("http://localhost:3000/", {
-        accept: "application/json",
-        "content-type": "application/json",
+        headers: {
+          accept: "application/json",
+          "content-type": "application/json",
+        },
         method: "POST",
         body: JSON.stringify({
           gender: fields.gender,
@@ -47,36 +51,43 @@ export const App = () => {
     }
   };
 
+  const handleReset = () => {
+    setCombinationStatus("DEFAULT");
+    setFields({
+      gender: "male",
+      ocasion: "",
+      tshirt: "",
+      pants: "",
+      shoes: "",
+    });
+  };
+
   return (
     <Layout>
-      <div className="p-4">
-        <div className="flex flex-col">
-          <p className="text-base font-medium text-neutral-900 mb-2">Gênero:</p>
-          <div className="flex gap-4">
-            <InputRadio
-              id="male"
-              type="radio"
-              name="male"
-              label="Masculino"
-              checked={fields.gender === "male"}
-              onChange={() => setFields({ ...fields, gender: "male" })}
-            />
-            <InputRadio
-              id="female"
-              type="radio"
-              name="female"
-              label="Feminino"
-              checked={fields.gender === "female"}
-              onChange={() => setFields({ ...fields, gender: "female" })}
-            />
-          </div>
+      <div className="py-12">
+        <article className="space-y-4 text-center">
+          <h1 className="text-4xl font-medium text-neutral-800">
+            Bem vindo(a) ao{" "}
+            <span className="text-red-600">Estilísta Virtual!</span>
+          </h1>
+          <p className="text-base font-normal text-neutral-600">
+            Faça combinações de roupas de acordo com o seu gênero e estilo, veja
+            se você está na moda!
+          </p>
+        </article>
 
+        <hr className="my-16" />
+
+        <h2 className="text-2xl font-medium text-neutral-800">
+          Preencha as opções abaixo:
+        </h2>
+
+        <div className="flex gap-6 mt-4">
           <Select
             id="ocasion"
             label="Ocasião:"
             value={fields.ocasion}
-            className="mt-2"
-            selectClassName="w-1/4"
+            selectClassName="w-60"
             onChange={(e) => setFields({ ...fields, ocasion: e.target.value })}
             options={[
               { label: "Casual", value: "casual" },
@@ -86,6 +97,30 @@ export const App = () => {
               { label: "Praia", value: "praia" },
             ]}
           />
+
+          <div className="flex flex-col">
+            <p className="text-base font-medium text-neutral-900 mb-4">
+              Gênero:
+            </p>
+            <div className="flex gap-4">
+              <InputRadio
+                id="male"
+                type="radio"
+                name="male"
+                label="Masculino"
+                checked={fields.gender === "male"}
+                onChange={() => setFields({ ...fields, gender: "male" })}
+              />
+              <InputRadio
+                id="female"
+                type="radio"
+                name="female"
+                label="Feminino"
+                checked={fields.gender === "female"}
+                onChange={() => setFields({ ...fields, gender: "female" })}
+              />
+            </div>
+          </div>
         </div>
 
         {fields.gender === "male" ? (
@@ -94,24 +129,30 @@ export const App = () => {
           <Female fields={fields} setFields={setFields} />
         )}
 
-        <button
-          type="button"
-          className="flex mx-auto text-white bg-red-700 hover:bg-red-800 font-medium rounded-full text-base px-10 py-2.5 text-center uppercase mt-10"
-          onClick={handleCombination}
-        >
-          Combinar
-        </button>
+        {combinationStatus === "DEFAULT" && (
+          <Button className="mt-12" onClick={handleCombination}>
+            Verificar combinação
+          </Button>
+        )}
 
         {combinationStatus === "MATCH" && (
-          <div className="flex flex-col gap-4 items-center justify-center">
-            <h1 className="text-2xl text-green-500 font-medium">DEU BOM</h1>
+          <div className="flex flex-col gap-4 items-center justify-center mt-8">
+            <CheckCircle size={52} className="text-green-500" />
+            <h3 className="text-green-500 font-medium text-4xl">Combina</h3>
           </div>
         )}
 
         {combinationStatus === "NOT_MATCH" && (
-          <div className="flex flex-col gap-4 items-center justify-center">
-            <h1 className="text-2xl text-red-500 font-medium">DEU RUIM</h1>
+          <div className="flex flex-col gap-4 items-center justify-center mt-8">
+            <XCircle size={52} className="text-red-500" />
+            <h3 className="text-red-500 font-medium text-4xl">Não combina</h3>
           </div>
+        )}
+
+        {combinationStatus !== "DEFAULT" && (
+          <Button onClick={handleReset} className="mt-12">
+            Refazer combinação
+          </Button>
         )}
       </div>
     </Layout>

@@ -35,6 +35,10 @@ export const Male = ({ fields, setFields }) => {
               label: "Camiseta de tecido leve",
               value: "camiseta_tecido_leve",
             },
+            {
+              label: "nenhum",
+              value: "nenhum",
+            },
           ]}
         />
       </div>

@@ -25,7 +25,7 @@ export const Select = ({
         value={value}
         onChange={onChange}
         className={classNames(
-          "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5",
+          "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block p-2.5",
           selectClassName
         )}
         {...rest}

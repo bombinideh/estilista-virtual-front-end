@@ -28,8 +28,32 @@ export const Female = ({ fields, setFields }) => {
               value: "básica_cores_vibrantes",
             },
             {
-              label: "Camiseta de tecido leve",
-              value: "camiseta_tecido_leve",
+              label: "Camiseta de tecido leve em tons vibrantes",
+              value: "camiseta_tecido_leve_tons_vibrantes",
+            },
+            {
+              label: "Vestido longo nas cores branco ou preto",
+              value: "vestido_longo_branco_preto",
+            },
+            {
+              label: "Camiseta básica em tons vibrantes",
+              value: "camiseta_básica_cores_vibrantes",
+            },
+            {
+              label: "Cropped em cores vibrantes básicas",
+              value: "cropped_cores_vibrantes_basicas",
+            },
+            {
+              label: "Vestido curto em tons vibrantes",
+              value: "vestido_curto_tons_vibrantes",
+            },
+            {
+              label: "Vestido longo em tons vibrantes",
+              value: "vestido_longo_tons_vibrantes",
+            },
+            {
+              label: "vestido de praia em tecido leve e cores claras",
+              value: "vestido_praia_tecido_leve_cores_claras",
             },
           ]}
         />
@@ -47,16 +71,32 @@ export const Female = ({ fields, setFields }) => {
               value: "social_tons_neutros",
             },
             {
-              label: "Calça social tons escuros",
-              value: "jeans_medio_escuro",
+              label: "Shorts legging em tons claro / pastel",
+              value: "shorts_legging_tons_claros_pastel",
+            },
+            {
+              label: "Calça legging em tons claro / pastel",
+              value: "calca_legging_tons_claros_pastel",
             },
             {
               label: "Calça jeans",
               value: "calca_jeans",
             },
             {
-              label: "Bermuda jeans tons medios / escuros",
-              value: "bermuda_jeans_medio_escuro",
+              label: "Short jeans tons medios / escuros",
+              value: "short_jeans_tom_medio_escuro",
+            },
+            {
+              label: "Calça jeans tons medios / escuros",
+              value: "calca_jeans_tom_medio_escuro",
+            },
+            {
+              label: "nenhum",
+              value: "nenhum",
+            },
+            {
+              label: "Biquíni em cores básicas",
+              value: "biquini_cor_basica",
             },
           ]}
         />
@@ -70,16 +110,16 @@ export const Female = ({ fields, setFields }) => {
           onChange={(e) => setFields({ ...fields, shoes: e.target.value })}
           options={[
             {
-              label: "Sapato social marrom / preto",
-              value: "social_preto_marrom",
+              label: "Salto alto preto / nude",
+              value: "salto_alto_preto_nude",
             },
             {
               label: "Tênis branco / preto",
               value: "tenis_branco_preto",
             },
             {
-              label: "Tênis cor neutra",
-              value: "tenis_neutro",
+              label: "Salto alto em tons metálicos",
+              value: "salto_alto_tons_metalicos",
             },
             {
               label: "Sapato social",

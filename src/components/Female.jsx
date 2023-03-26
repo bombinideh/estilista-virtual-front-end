@@ -9,30 +9,34 @@ export const Female = ({ fields, setFields }) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
       <div className="flex flex-col gap-4">
-        <Card title="Camisa" imgSrc={camisaFeminina} alt="Camiseta feminina" />
+        <Card
+          title="Parte Superior"
+          imgSrc={camisaFeminina}
+          alt="Camiseta feminina"
+        />
         <Select
           id="tshirt"
           value={fields.tshirt}
           onChange={(e) => setFields({ ...fields, tshirt: e.target.value })}
           options={[
             {
-              label: "Camisa social tons claros ou pastel",
-              value: "social_tons_claros_pastel",
+              label: "Camisa social tons claros / pastel",
+              value: "camisa_social_tons_claros_pastel",
             },
             {
-              label: "Camisa social tons claros ou pastel com blazer",
-              value: "social_tons_claros_pastel_com_blazer",
+              label: "Camisa social tons claros / pastel com blazer",
+              value: "camisa_social_tons_claros_pastel_com_blazer",
             },
             {
               label: "Camiseta básica cores vibrantes",
-              value: "básica_cores_vibrantes",
+              value: "camisa_básica_cores_vibrantes",
             },
             {
               label: "Camiseta de tecido leve em tons vibrantes",
               value: "camiseta_tecido_leve_tons_vibrantes",
             },
             {
-              label: "Vestido longo nas cores branco ou preto",
+              label: "Vestido longo nas cores branco / preto",
               value: "vestido_longo_branco_preto",
             },
             {
@@ -55,12 +59,20 @@ export const Female = ({ fields, setFields }) => {
               label: "vestido de praia em tecido leve e cores claras",
               value: "vestido_praia_tecido_leve_cores_claras",
             },
+            {
+              label: "Biquíni em cores básicas",
+              value: "biquini_cor_basica",
+            },
           ]}
         />
       </div>
 
       <div className="flex flex-col gap-4">
-        <Card title="Calça" imgSrc={calcaFeminina} alt="Calça feminina" />
+        <Card
+          title="Parte Inferior"
+          imgSrc={calcaFeminina}
+          alt="Calça feminina"
+        />
         <Select
           id="pants"
           value={fields.pants}
@@ -68,7 +80,7 @@ export const Female = ({ fields, setFields }) => {
           options={[
             {
               label: "Calça social tons neutros",
-              value: "social_tons_neutros",
+              value: "calca_social_tons_neutros",
             },
             {
               label: "Shorts legging em tons claro / pastel",
@@ -77,10 +89,6 @@ export const Female = ({ fields, setFields }) => {
             {
               label: "Calça legging em tons claro / pastel",
               value: "calca_legging_tons_claros_pastel",
-            },
-            {
-              label: "Calça jeans",
-              value: "calca_jeans",
             },
             {
               label: "Short jeans tons medios / escuros",

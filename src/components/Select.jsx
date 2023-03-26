@@ -31,11 +31,13 @@ export const Select = ({
         {...rest}
       >
         <option value="">Selecione...</option>
-        {options.map((option) => (
-          <option key={option.value} value={option.value}>
-            {option.label}
-          </option>
-        ))}
+        {[...options]
+          .sort((a, b) => (a.label > b.label ? 1 : -1))
+          .map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
       </select>
     </div>
   );

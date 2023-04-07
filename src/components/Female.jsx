@@ -56,7 +56,7 @@ export const Female = ({ fields, setFields }) => {
               value: "vestido_longo_tons_vibrantes",
             },
             {
-              label: "vestido de praia em tecido leve e cores claras",
+              label: "Vestido de praia em tecido leve e cores claras",
               value: "vestido_praia_tecido_leve_cores_claras",
             },
             {

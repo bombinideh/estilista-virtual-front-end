@@ -31,7 +31,7 @@ export const Home = () => {
         return;
       }
 
-      const response = await fetch("http://localhost:3000/", {
+      const response = await fetch("https://estilista-virtual-back-end.onrender.com", {
         headers: {
           accept: "application/json",
           "content-type": "application/json",
